@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Cargo</title>
+</head>
+<body>
+    <h1>Detalhes do Cargo</h1>
+
+    <p><strong>ID:</strong> {{ $cargo->id }}</p>
+    <p><strong>Descrição:</strong> {{ $cargo->descricao }}</p>
+
+    <a href="{{ route('cargos.index') }}">Voltar para a lista de cargos</a>
+</body>
+</html>
