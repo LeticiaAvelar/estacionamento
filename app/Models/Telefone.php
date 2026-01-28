@@ -19,6 +19,6 @@ class Telefone extends Model
     // Relação com o modelo Funcionario
     public function funcionario(): BelongsTo // Um telefone pertence a um funcionário
     {
-        return $this->belongsTo(Funcionario::class, 'telefone_id'); // Define a relação
+        return $this->belongsTo(Funcionario::class); // Define a relação
     }
 }

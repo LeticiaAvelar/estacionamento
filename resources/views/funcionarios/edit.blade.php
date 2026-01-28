@@ -19,7 +19,7 @@
         <label for="cargo_id">Cargo:</label>
         <select name="cargo_id" id="cargo_id">
             @foreach ($cargos as $cargo)
-                <option value="{{ $cargo->id }}" {{ $funcionario->cargo_id == $cargo->id ? 'selected' : '' }}>{{ $cargo->nome }}</option>
+                <option value="{{ $cargo->id }}" {{ $funcionario->cargo_id == $cargo->id ? 'selected' : '' }}>{{ $cargo->descricao }}</option>
             @endforeach
         </select><br><br>
 

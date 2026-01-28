@@ -14,7 +14,7 @@ class FuncionarioController extends Controller
      */
     public function index(Request $request) // O request pode ser usado para filtrar ou paginar
     {
-        $funcionarios = Funcionario::with(['cargos', 'telefones'])->get(); // Carrega funcionários com seus cargos e telefones relacionados
+        $funcionarios = Funcionario::all(); // Carrega funcionários com seus cargos e telefones relacionados
         return view('funcionarios.index', compact('funcionarios')); // Passa os funcionários para a view
     }
 
@@ -23,9 +23,8 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        $cargos = Cargo::all(); // Obtém todos os cargos disponíveis
-        $telefones = Telefone::all(); // Obtém todos os telefones disponíveis
-        return view('funcionarios.create', compact('cargos', 'telefones')); // Passa cargos e telefones para a view
+        $cargos = Cargo::orderBy('descricao')->get(); // Obtém todos os cargos disponíveis
+        return view('funcionarios.create', compact('cargos')); // Passa cargos para a view
     }
 
     /**
@@ -33,6 +32,15 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
+        if (!$request->has('telefone_id')) { # Se não houver telefone_id no request, cria um novo telefone
+            if ($request->input('telefone') != '') { # Se o campo telefone não estiver vazio
+                $telefone = new Telefone();
+                $telefone->numero = $request->input('telefone');
+                $telefone->save();
+                $request->merge(['telefone_id' => $telefone->id]);
+            }
+        }
+
         $funcionario = new Funcionario(); // Cria uma nova instância do modelo Funcionario
         $funcionario->nome = $request->input('nome');
         $funcionario->cargo_id = $request->input('cargo_id');
@@ -43,14 +51,16 @@ class FuncionarioController extends Controller
         $funcionario->email = $request->input('email');
         $funcionario->chave_pix = $request->input('chave_pix');
         $funcionario->save();
+
+        return redirect()->route('funcionarios.index')->with('success', 'Funcionário criado com sucesso!'); // Redireciona para a lista de funcionários com uma mensagem de sucesso
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Funcionario $funcionario)
+    public function show(string $id)
     {
-        $funcionario->load(['cargos', 'telefones']); // Carrega os relacionamentos necessários
+        $funcionario = Funcionario::findOrFail($id);
         return view('funcionarios.show', compact('funcionario')); // Passa o funcionário para a view
     }
 
@@ -70,7 +80,7 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, Funcionario $funcionario)
     {
-        $funcionario->nome = $request->input('nome');
+        $funcionario->nome = $request->input('nome'); # Atualiza o nome do funcionário a partir do request
         $funcionario->cargo_id = $request->input('cargo_id');
         $funcionario->salario = $request->input('salario');
         $funcionario->telefone_id = $request->input('telefone_id');

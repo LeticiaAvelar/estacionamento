@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Cargo extends Model
 {
@@ -17,8 +17,8 @@ class Cargo extends Model
     protected $fillable = ['descricao']; // Campos que podem ser atribuídos em massa
 
     // Relação com o modelo Funcionario
-    public function funcionarios(): HasMany // Um cargo pode ter muitos funcionários
+    public function funcionarios(): BelongsTo // Um cargo pode ter muitos funcionários
     {
-        return $this->hasMany(Funcionario::class, 'cargo_id'); // Define a relação
+        return $this->BelongsTo(Funcionario::class); // Define a relação
     }
 }

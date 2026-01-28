@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Funcionario extends Model
 {
@@ -25,13 +25,13 @@ class Funcionario extends Model
         'chave_pix'
     ]; // Campos que podem ser atribuídos em massa
 
-    public function cargos(): HasMany // Um funcionário pertence a um cargo
+    public function cargo(): HasOne // Um funcionário pertence a um cargo
     {
-        return $this->hasMany(Cargo::class, 'cargo_id'); // Define a relação
+        return $this->hasOne(Cargo::class); // Define a relação
     }
 
-    public function telefones(): HasMany // Um funcionário pertence a um telefone
+    public function telefone(): HasOne // Um funcionário pertence a um telefone
     {
-        return $this->hasMany(Telefone::class, 'telefone_id'); // Define a relação
+        return $this->hasOne(Telefone::class); // Define a relação
     }
 }
