@@ -48,7 +48,8 @@ class FuncionarioController extends Controller
      */
     public function show(Funcionario $funcionario)
     {
-        //
+        $funcionario->load(['cargos', 'telefones']); // Carrega os relacionamentos necessários
+        return view('funcionarios.show', compact('funcionario')); // Passa o funcionário para a view
     }
 
     /**
@@ -56,7 +57,8 @@ class FuncionarioController extends Controller
      */
     public function edit(Funcionario $funcionario)
     {
-        //
+        $funcionario->load(['cargos', 'telefones']); // Carrega os relacionamentos necessários
+        return view('funcionarios.edit', compact('funcionario')); // Passa o funcionário para a view
     }
 
     /**
@@ -64,7 +66,17 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, Funcionario $funcionario)
     {
-        //
+        $funcionario->nome = $request->input('nome');
+        $funcionario->cargo_id = $request->input('cargo_id');
+        $funcionario->salario = $request->input('salario');
+        $funcionario->telefone_id = $request->input('telefone_id');
+        $funcionario->hora_entrada = $request->input('hora_entrada');
+        $funcionario->hora_saida = $request->input('hora_saida');
+        $funcionario->email = $request->input('email');
+        $funcionario->chave_pix = $request->input('chave_pix');
+        $funcionario->save();
+
+        return redirect()->route('funcionarios.index')->with('success', 'Funcionário atualizado com sucesso!'); // Redireciona para a lista de funcionários com uma mensagem de sucesso
     }
 
     /**
@@ -72,6 +84,8 @@ class FuncionarioController extends Controller
      */
     public function destroy(Funcionario $funcionario)
     {
-        //
+        $funcionario->delete(); // Remove o funcionário do banco de dados
+        
+        return redirect()->route('funcionarios.index')->with('success', 'Funcionário removido com sucesso!'); // Redireciona para a lista de funcionários com uma mensagem de sucesso
     }
 }
