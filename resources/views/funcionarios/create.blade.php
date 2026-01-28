@@ -31,6 +31,8 @@
         <label for="hora_saida">Hora de Saída:</label>
         <input type="time" name="hora_saida" id="hora_saida"><br><br>
 
-        <button type="submit">Criar Funcionário</button>
-    </form>
+        <button class="btn btn-primary" type="submit">Criar Funcionário</button>
+    </form><br>
+
+    <a href="{{ route('funcionarios.index') }}">Voltar para a lista de funcionários</a>
 </x-app-layout>

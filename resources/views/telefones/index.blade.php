@@ -11,7 +11,8 @@
 
     <a href="{{ route('telefones.create') }}">Adicionar Novo Telefone</a>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
+
         <thead>
             <tr>
                 <th>ID</th>

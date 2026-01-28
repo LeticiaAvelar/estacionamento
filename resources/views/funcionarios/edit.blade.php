@@ -31,5 +31,8 @@
         <input type="time" name="hora_saida" id="hora_saida" value="{{ $funcionario->hora_saida }}"><br><br>
 
         <button type="submit" class="btn btn-primary">Atualizar Funcionário</button>
-    </form>
+        
+    </form><br><br>
+
+        <a href="{{ route('funcionarios.index') }}">Voltar para a lista de funcionários</a>
 </x-app-layout>

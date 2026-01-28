@@ -23,8 +23,8 @@
             <option value="celular" {{ $telefone->tipo == 'celular' ? 'selected' : '' }}>Celular</option>
         </select><br><br>
 
-        <button type="submit">Atualizar Telefone</button>
-    </form>
+        <button type="submit" class="btn btn-primary">Atualizar Telefone</button>
+    </form><br>
 
     <a href="{{ route('telefones.index') }}">Voltar para a lista de telefones</a>
 </x-app-layout>

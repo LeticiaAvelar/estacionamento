@@ -12,10 +12,10 @@
     <form action="{{ route('cargos.store') }}" method="POST">
         @csrf
         <label for="descricao">Descrição:</label>
-        <input type="text" name="descricao" id="descricao" required>
+        <input type="text" name="descricao" id="descricao" required><br><br>
 
-        <button type="submit">Criar Cargo</button>
-    </form>
+        <button class="btn btn-primary" type="submit">Criar Cargo</button>
+    </form><br>
 
     <a href="{{ route('cargos.index') }}">Voltar para a lista de cargos</a>
 </x-app-layout>

@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
     <header>
         {{-- Navigation content --}}
         <div class="container-fluid">
@@ -38,7 +39,7 @@
     </header>
 
     <main>
-        <div class="container">
+        <div class="container mt-4">
             {{-- The main content goes here --}}
             {{ $slot }}
         </div>

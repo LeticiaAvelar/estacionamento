@@ -22,8 +22,8 @@
             <option value="celular">Celular</option>
         </select><br><br>
 
-        <button type="submit">Salvar Telefone</button>
-    </form>
+        <button class="btn btn-primary" type="submit">Salvar Telefone</button>
+    </form><br>
 
     <a href="{{ route('telefones.index') }}">Voltar para a lista de telefones</a>
 </x-app-layout>
