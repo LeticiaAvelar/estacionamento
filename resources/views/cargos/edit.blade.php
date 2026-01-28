@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Cargo</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="Editar Cargo"></x-slot>
+
     <h1>Editar Cargo</h1>
 
     @if (session('success'))
@@ -24,5 +19,4 @@
     </form>
 
     <a href="{{ route('cargos.index') }}">Voltar para a lista de cargos</a>
-</body>
-</html>
+</x-app-layout>

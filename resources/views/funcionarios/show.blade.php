@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar Funcionário</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="1"></x-slot>
+
     <h1>Visualizar Funcionário</h1>
     <p><strong>ID:</strong> {{ $funcionario->id }}</p>
     <p><strong>Nome:</strong> {{ $funcionario->nome }}</p>
@@ -17,5 +12,4 @@
     <p><strong>Hora de Saída:</strong> {{ $funcionario->hora_saida }}</p>
 
     <a href="{{ route('funcionarios.index') }}">Voltar para a lista de funcionários</a>
-</body>
-</html>
+</x-app-layout>

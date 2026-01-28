@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Telefones</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="Lista de Telefones"></x-slot>
+
     <h1>Lista de Telefones</h1>
 
     @if (session('success'))
@@ -16,7 +11,7 @@
 
     <a href="{{ route('telefones.create') }}">Adicionar Novo Telefone</a>
 
-    <table border="1" cellpadding="10" cellspacing="0">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -44,5 +39,4 @@
             @endforeach
         </tbody>
     </table>
-</body>
-</html>
+</x-app-layout>

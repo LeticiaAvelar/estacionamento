@@ -61,6 +61,7 @@ class FuncionarioController extends Controller
     public function show(string $id)
     {
         $funcionario = Funcionario::findOrFail($id);
+
         return view('funcionarios.show', compact('funcionario')); // Passa o funcionário para a view
     }
 
@@ -69,10 +70,9 @@ class FuncionarioController extends Controller
      */
     public function edit(Funcionario $funcionario)
     {
-        $funcionario->load(['cargos', 'telefones']); // Carrega os relacionamentos necessários
-        $cargos = Cargo::all(); // Obtém todos os cargos disponíveis
-        $telefones = Telefone::all(); // Obtém todos os telefones disponíveis
-        return view('funcionarios.edit', compact('funcionario')); // Passa o funcionário para a view
+        $funcionario = Funcionario::findOrFail($funcionario->id);
+        $cargos = Cargo::orderBy('descricao')->get(); // Obtém todos os cargos disponíveis
+        return view('funcionarios.edit', compact('funcionario', 'cargos')); // Passa o funcionário e cargos para a view
     }
 
     /**
@@ -83,12 +83,16 @@ class FuncionarioController extends Controller
         $funcionario->nome = $request->input('nome'); # Atualiza o nome do funcionário a partir do request
         $funcionario->cargo_id = $request->input('cargo_id');
         $funcionario->salario = $request->input('salario');
-        $funcionario->telefone_id = $request->input('telefone_id');
         $funcionario->hora_entrada = $request->input('hora_entrada');
         $funcionario->hora_saida = $request->input('hora_saida');
         $funcionario->email = $request->input('email');
         $funcionario->chave_pix = $request->input('chave_pix');
         $funcionario->save();
+        $telefone = Telefone::find($funcionario->telefone_id);
+        if ($telefone) {
+            $telefone->numero = $request->input('telefone');
+            $telefone->save();
+        }
 
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário atualizado com sucesso!'); // Redireciona para a lista de funcionários com uma mensagem de sucesso
     }

@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Telefone</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="Editar Telefone"></x-slot>
+
     <h1>Editar Telefone</h1>
 
     @if (session('success'))
@@ -32,5 +27,4 @@
     </form>
 
     <a href="{{ route('telefones.index') }}">Voltar para a lista de telefones</a>
-</body>
-</html>
+</x-app-layout>

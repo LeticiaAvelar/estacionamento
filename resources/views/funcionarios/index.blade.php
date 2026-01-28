@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funcionários</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="Criar Novo Funcionário"></x-slot>
+
     <h1>Funcionários</h1>
 
     @if (session('success'))
-        <div style="color: green;">
+        <div class="alert alert-success d-flex align-items-center" role="alert">
             {{ session('success') }}
         </div>
     @endif
 
     <a href="{{ route('funcionarios.create') }}">Criar Novo Funcionário</a>
-    <table border="1" cellpadding="10" cellspacing="0">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -43,5 +38,4 @@
             @endforeach
         </tbody>
     </table>
-</body>
-</html>
+</x-app-layout>

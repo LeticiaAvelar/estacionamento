@@ -17,7 +17,7 @@ class Cargo extends Model
     protected $fillable = ['descricao']; // Campos que podem ser atribuídos em massa
 
     // Relação com o modelo Funcionario
-    public function funcionarios(): BelongsTo // Um cargo pode ter muitos funcionários
+    public function funcionario(): BelongsTo // Um cargo pode ter muitos funcionários
     {
         return $this->BelongsTo(Funcionario::class); // Define a relação
     }
