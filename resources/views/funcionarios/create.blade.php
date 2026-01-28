@@ -7,7 +7,9 @@
 </head>
 <body>
     <h1>Criar Novo Funcionário</h1>
+
     <form action="{{ route('funcionarios.store') }}" method="POST">
+        
         @csrf
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome" required><br><br>

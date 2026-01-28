@@ -23,7 +23,9 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        return view('funcionarios.create'); // Retorna a view para criar um funcionário
+        $cargos = Cargo::all(); // Obtém todos os cargos disponíveis
+        $telefones = Telefone::all(); // Obtém todos os telefones disponíveis
+        return view('funcionarios.create', compact('cargos', 'telefones')); // Passa cargos e telefones para a view
     }
 
     /**
@@ -58,6 +60,8 @@ class FuncionarioController extends Controller
     public function edit(Funcionario $funcionario)
     {
         $funcionario->load(['cargos', 'telefones']); // Carrega os relacionamentos necessários
+        $cargos = Cargo::all(); // Obtém todos os cargos disponíveis
+        $telefones = Telefone::all(); // Obtém todos os telefones disponíveis
         return view('funcionarios.edit', compact('funcionario')); // Passa o funcionário para a view
     }
 
@@ -85,7 +89,7 @@ class FuncionarioController extends Controller
     public function destroy(Funcionario $funcionario)
     {
         $funcionario->delete(); // Remove o funcionário do banco de dados
-        
+
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário removido com sucesso!'); // Redireciona para a lista de funcionários com uma mensagem de sucesso
     }
 }
