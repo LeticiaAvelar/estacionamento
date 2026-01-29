@@ -1,0 +1,18 @@
+/* Remove o sublinhado em todos os estados */
+a,
+a:link,
+a:visited {
+  text-decoration: none !important; /* Tira o sublinhado */
+  color: #333; /* Cor padrão do texto */
+}
+
+/* Adiciona o sublinhado quando o mouse passa por cima */
+a:hover {
+  text-decoration: none !important; /* Adiciona o sublinhado */
+  color: #000 !important; /* Nova cor ao passar o mouse */
+}
+
+/* Opcional: Adiciona sublinhado ao clicar */
+a:active {
+  text-decoration: none !important;
+}

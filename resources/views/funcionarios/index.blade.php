@@ -27,8 +27,8 @@
                     <td>{{ $funcionario->nome }}</td>
                     <td>{{ $funcionario->email }}</td>
                     <td>
-                        <a href="{{ route('funcionarios.show', $funcionario->id) }}">Ver</a>
-                        <a href="{{ route('funcionarios.edit', $funcionario->id) }}">Editar</a>
+                        <button type="button" class="btn btn-secondary"><a href="{{ route('funcionarios.show', $funcionario->id) }}">Ver</a></button>
+                        <button type="button" class="btn btn-secondary"><a href="{{ route('funcionarios.edit', $funcionario->id) }}">Editar</a></button>
                         <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

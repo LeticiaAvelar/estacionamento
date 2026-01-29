@@ -28,8 +28,8 @@
                     <td>{{ $telefone->numero }}</td>
                     <td>{{ $telefone->tipo }}</td>
                     <td>
-                        <a href="{{ route('telefones.show', $telefone->id) }}">Ver</a>
-                        <a href="{{ route('telefones.edit', $telefone->id) }}">Editar</a>
+                        <button type="button" class="btn btn-secondary"><a href="{{ route('telefones.show', $telefone->id) }}">Ver</a></button>
+                        <button type="button" class="btn btn-secondary"><a href="{{ route('telefones.edit', $telefone->id) }}">Editar</a></button>
                         <form action="{{ route('telefones.destroy', $telefone->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

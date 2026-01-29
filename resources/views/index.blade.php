@@ -6,4 +6,6 @@
     <a href="{{ route('funcionarios.index') }}">Ir para cadastro de funcionários</a>
     <br>
     <a href="{{ route('telefones.index') }}">Ir para cadastro de telefones</a>
+
 </x-app-layout>
+
